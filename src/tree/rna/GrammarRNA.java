@@ -1,5 +1,6 @@
 package tree.rna;
 
+//Credits to https://github.com/digitalheir/java-probabilistic-earley-parser
 import org.leibnizcenter.cfg.algebra.semiring.dbl.LogSemiring;
 import org.leibnizcenter.cfg.category.Category;
 import org.leibnizcenter.cfg.category.nonterminal.NonTerminal;
@@ -61,7 +62,10 @@ public class GrammarRNA {
     private static double probability[] = {0.25,0.25,0.25,0.25,1,1,1,1,1,1,1,0.25,0.25,0.25,0.25};
     //private static double probability[] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
     
-    //Gramar RNA Chain
+    /**
+     * Gramar RNA Chain
+     * Credits to http://www.cs.tau.ac.il/~rshamir/algmb/presentations/SCFG-for-posting.pdf
+     */
     private static final Grammar grammarRNA = new Grammar.Builder("RNA").setSemiring(LogSemiring.get())
     		.addRule(probability[0],
     				S, 
@@ -161,8 +165,6 @@ public class GrammarRNA {
     
     
     public static void main(String[] args) {
-    	
-
         //calculateProbability();
         Parser<String> parser = new Parser<>(grammarRNA);
         
@@ -173,15 +175,23 @@ public class GrammarRNA {
         
         //Initially pair
         String begin = POSIBLE_PAIRS[ThreadLocalRandom.current().nextInt(1, 4)];
-        begin = joinCenter(begin, ThreadLocalRandom.current().nextInt(1,4));
-
+        
+        //Final size of RNA
+        int finalSizeRNA = 12;
+        int beginSizeRNA = 2;
+        int beginSizeObjetive = 4;
+        
+        while(beginSizeRNA < beginSizeObjetive){
+        	begin = joinCenter(begin, ThreadLocalRandom.current().nextInt(1,4));
+        	beginSizeRNA += 2;
+        }
+        
         //String to analize
         String iterableChain = begin;
         
         //ChainRNA size
-        int size = 12;
         
-        for(int i=0; i<size/2; i++){
+        for(int i=0; i<(finalSizeRNA/2 - beginSizeObjetive/2); i++){
         	if(i >= 4){
         		iterableChain = joinCenter(iterableChain, 0);
         	}
@@ -227,8 +237,4 @@ public class GrammarRNA {
     	
     	return answer;
     }
-    
-    
-    // A T x x x x x x x x C G   
-    
 }
