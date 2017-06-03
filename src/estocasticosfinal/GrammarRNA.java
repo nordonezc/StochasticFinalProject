@@ -14,9 +14,11 @@ import org.leibnizcenter.cfg.earleyparser.Parser;
 //import org.leibnizcenter.cfg.grammar.Grammar;
 import org.leibnizcenter.cfg.token.Tokens;
 import static java.nio.charset.StandardCharsets.*;
+import java.util.ArrayList;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import org.leibnizcenter.cfg.earleyparser.ParseTreeWithScore;
 
 public class GrammarRNA {
     // NonTerminals are just wrappers around a string
@@ -169,49 +171,40 @@ public class GrammarRNA {
 	    System.err.println();
     }
     
-    
-    public static void main(String[] args) {
-        //calculateProbability();
-        Parser<String> parser = new Parser<>(grammarRNA);
-        
-        //Recognize the toknes of the grammarRNA
-        System.out.println(
-                parser.recognize(S, Tokens.tokenize("A T C G") // true
-        ));
-        
-        //Initially pair
-        String begin = POSIBLE_PAIRS[ThreadLocalRandom.current().nextInt(1, 4)];
-        
-        //Final size of RNA
-        int finalSizeRNA = 12;
-        int beginSizeRNA = 2;
-        int beginSizeObjetive = 4;
-        
-        while(beginSizeRNA < beginSizeObjetive){
-        	begin = joinCenter(begin, ThreadLocalRandom.current().nextInt(1,4));
-        	beginSizeRNA += 2;
+    public static ArrayList<ParseTreeWithScore> theBest(String chain, int iterations, int beginSize, int finalSize){
+    	Parser<String> parser = new Parser<>(grammarRNA); 	
+    	parser.recognize(S, Tokens.tokenize("A T C G"));
+    	ArrayList<ParseTreeWithScore> bestTrees = new ArrayList<>();
+    	ArrayList<ParseTreeWithScore> currentTrees = new ArrayList<>();
+    	double currentProbability = 0;
+    	double bestProbability = 0;
+    	String iterableChain;
+    	Random ran = new Random();
+    	int j = iterations;
+        while(j >= 0){
+            currentTrees.clear();
+            iterableChain = chain;
+            for(int i=0; i<(finalSize/2 - beginSize/2); i++){
+                if(i >= 4){
+                        iterableChain = joinCenter(iterableChain, 0);
+                }
+                else{
+                        iterableChain = joinCenter(iterableChain, ran.nextInt(4) + 1);
+                }
+                currentTrees.add(parser.getViterbiParseWithScore(S, Tokens.tokenize(iterableChain.trim())));  	        
+            }
+                currentProbability = currentTrees.get(currentTrees.size()-1).score.getProbability();
+
+                if (currentProbability > bestProbability) {
+                    bestProbability = currentProbability;
+                    bestTrees.clear();
+                    for (ParseTreeWithScore parseTreeWithScore : currentTrees) {
+                            bestTrees.add(parseTreeWithScore);
+                    }
+                }
+                j--;
         }
-        
-        //String to analize
-        String iterableChain = begin;
-        
-        //ChainRNA size
-        
-        for(int i=0; i<(finalSizeRNA/2 - beginSizeObjetive/2); i++){
-        	if(i >= 4){
-        		iterableChain = joinCenter(iterableChain, 0);
-        	}
-        	else{
-        		iterableChain = joinCenter(iterableChain, ThreadLocalRandom.current().nextInt(1,4));
-        	}
-        	System.out.println(
-                    parser.getViterbiParseWithScore(S, Tokens.tokenize(iterableChain.trim())) // Most likely parse tree with probability
-            );
-        }
-        
-        //save max probability
-        //¿Porque en una cadena de RNA porque las 4 proteinas del centro porque pueden romper el patrón de pares? 
-        
+        return bestTrees;
     }
     
     /**
@@ -244,6 +237,26 @@ public class GrammarRNA {
     	return answer;
     }
     
-    
+    public static void main(String[] args) {      
+        //Initially pair
+        String begin = POSIBLE_PAIRS[ThreadLocalRandom.current().nextInt(1, 4)];
+        
+        //Final size of RNA
+        int finalSizeRNA = 12;
+        int beginSizeRNA = 2;
+        int beginSizeObjetive = 4;
+        
+        while(beginSizeRNA < beginSizeObjetive){
+            begin = joinCenter(begin, ThreadLocalRandom.current().nextInt(1,4));
+            beginSizeRNA += 2;
+        }
+               
+        ArrayList<ParseTreeWithScore> winner = theBest(begin, 5, beginSizeObjetive, finalSizeRNA);
+        for (ParseTreeWithScore tree : winner) {
+            System.out.println(tree);
+        }
+        //save max probability
+        //¿Porque en una cadena de RNA porque las 4 proteinas del centro porque pueden romper el patrón de pares? 
+    }
     
 }
