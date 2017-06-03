@@ -1,11 +1,14 @@
-package tree.rna;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package estocasticosfinal;
 
 //Credits to https://github.com/digitalheir/java-probabilistic-earley-parser
 import org.leibnizcenter.cfg.algebra.semiring.dbl.LogSemiring;
-import org.leibnizcenter.cfg.category.Category;
-import org.leibnizcenter.cfg.category.nonterminal.NonTerminal;
 import org.leibnizcenter.cfg.category.terminal.Terminal;
-import org.leibnizcenter.cfg.category.terminal.stringterminal.CaseInsensitiveStringTerminal;
+//import org.leibnizcenter.cfg.category.terminal.stringterminal.StringTerminal;
 import org.leibnizcenter.cfg.category.terminal.stringterminal.ExactStringTerminal;
 import org.leibnizcenter.cfg.earleyparser.Parser;
 import org.leibnizcenter.cfg.grammar.Grammar;
@@ -18,21 +21,21 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GrammarRNA {
     // NonTerminals are just wrappers around a string
 	// NonTerminal for RNAChain
-    private static final NonTerminal S = Category.nonTerminal("S");
-    private static final NonTerminal SA = Category.nonTerminal("SA");
-    private static final NonTerminal ST = Category.nonTerminal("ST");
-    private static final NonTerminal SC = Category.nonTerminal("SC");
-    private static final NonTerminal SG = Category.nonTerminal("SG");
-    private static final NonTerminal L1 = Category.nonTerminal("L1");
-    private static final NonTerminal L2 = Category.nonTerminal("L2");
-    private static final NonTerminal N = Category.nonTerminal("N");
+    private static final NoTerminal S = Category.nonTerminal("S");
+    private static final NoTerminal SA = Category.nonTerminal("SA");
+    private static final NoTerminal ST = Category.nonTerminal("ST");
+    private static final NoTerminal SC = Category.nonTerminal("SC");
+    private static final NoTerminal SG = Category.nonTerminal("SG");
+    private static final NoTerminal L1 = Category.nonTerminal("L1");
+    private static final NoTerminal L2 = Category.nonTerminal("L2");
+    private static final NoTerminal N = Category.nonTerminal("N");
     
     //Example
-    private static final NonTerminal NP = Category.nonTerminal("NP");
-    private static final NonTerminal VP = Category.nonTerminal("VP");
-    private static final NonTerminal TV = Category.nonTerminal("TV");
-    private static final NonTerminal Det = Category.nonTerminal("Det");
-    private static final NonTerminal Mod = Category.nonTerminal("Mod");
+    private static final NoTerminal NP = Category.nonTerminal("NP");
+    private static final NoTerminal VP = Category.nonTerminal("VP");
+    private static final NoTerminal TV = Category.nonTerminal("TV");
+    private static final NoTerminal Det = Category.nonTerminal("Det");
+    private static final NoTerminal Mod = Category.nonTerminal("Mod");
 
     // Terminal types are realized by implementing the Terminal interface, specifically the function hasCategory. Terminal is a functional interface.
     // Note that tokens can be of multiple terminal types (homographs: "bank" as a noun or "bank" as a verb), so you can use this method to pool many words to a single terminal 
@@ -40,17 +43,20 @@ public class GrammarRNA {
     // Some utility terminal types are pre-defined:
 
     //Terminal for RNA Chain
-    private static final Terminal<String> A = new CaseInsensitiveStringTerminal("A");
-    private static final Terminal<String> C = new CaseInsensitiveStringTerminal("C");
-    private static final Terminal<String> G = new CaseInsensitiveStringTerminal("G");
-    private static final Terminal<String> T = new CaseInsensitiveStringTerminal("T");
+    private static final Terminal<String> A = new StringTerminal("A");
+    private static final Terminal<String> C = new StringTerminal("C");
+    private static final Terminal<String> G = new StringTerminal("G");
+    private static final Terminal<String> T = new StringTerminal("T");
     
     //Terminal Example
-    private static final Terminal<String> the = new CaseInsensitiveStringTerminal("the");
-    private static final Terminal<String> a = new CaseInsensitiveStringTerminal("a");
-    private static final Terminal<String> man = new ExactStringTerminal("man");
-    private static final Terminal<String> stick = new ExactStringTerminal("stick");
-    private static final Terminal<String> with = new ExactStringTerminal("with");
+    private static final Terminal<String> the = new StringTerminal("the");
+    private static final Terminal<String> a = new StringTerminal("a");
+   // private static final Terminal<String> man = new ExactStringTerminal("man");
+   // private static final Terminal<String> stick = new ExactStringTerminal("stick");
+   // private static final Terminal<String> with = new ExactStringTerminal("with");
+    private static final Terminal<String> man = new StringTerminal("man");
+    private static final Terminal<String> stick = new StringTerminal("stick");
+    private static final Terminal<String> with = new StringTerminal("with");
     
     //Number of rules
     private static final int NUMBER_OF_RULES = 15;
@@ -204,7 +210,7 @@ public class GrammarRNA {
         }
         
         //save max probability
-        //¿Porque en una cadena de RNA porque las 4 proteinas del centro porque pueden romper el patrón de pares? 
+        //Â¿Porque en una cadena de RNA porque las 4 proteinas del centro porque pueden romper el patrÃ³n de pares? 
         
     }
     
