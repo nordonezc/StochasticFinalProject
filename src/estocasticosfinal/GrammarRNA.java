@@ -9,9 +9,9 @@ package estocasticosfinal;
 import org.leibnizcenter.cfg.algebra.semiring.dbl.LogSemiring;
 import org.leibnizcenter.cfg.category.terminal.Terminal;
 //import org.leibnizcenter.cfg.category.terminal.stringterminal.StringTerminal;
-import org.leibnizcenter.cfg.category.terminal.stringterminal.ExactStringTerminal;
+//import org.leibnizcenter.cfg.category.terminal.stringterminal.ExactStringTerminal;
 import org.leibnizcenter.cfg.earleyparser.Parser;
-import org.leibnizcenter.cfg.grammar.Grammar;
+//import org.leibnizcenter.cfg.grammar.Grammar;
 import org.leibnizcenter.cfg.token.Tokens;
 import static java.nio.charset.StandardCharsets.*;
 
@@ -72,7 +72,7 @@ public class GrammarRNA {
      * Gramar RNA Chain
      * Credits to http://www.cs.tau.ac.il/~rshamir/algmb/presentations/SCFG-for-posting.pdf
      */
-    private static final Grammar grammarRNA = new Grammar.Builder("RNA").setSemiring(LogSemiring.get())
+    private static final GrammarF grammarRNA = new GrammarF.Builder("RNA").setSemiring(LogSemiring.get())
     		.addRule(probability[0],
     				S, 
     				A, ST)
@@ -111,7 +111,7 @@ public class GrammarRNA {
     		.addRule(probability[13],N, G)
     		.addRule(probability[14],N, T)
     		.build();
-    
+    /*
     //Grammar example
     private static final Grammar grammar = new Grammar.Builder("test")
             .setSemiring(LogSemiring.get()) // If not set, defaults to Log semiring which is probably what you want. The builder takes care of converting probabilties to semiring elements
@@ -145,7 +145,7 @@ public class GrammarRNA {
             .addRule(TV, transitiveVerb)
             .addRule(Mod, with, NP) // eg. with a stick
             .build();
-
+*/
     //Calculate random probabilities
     private static void calculateProbability(){
     	double min = 0;
@@ -243,4 +243,7 @@ public class GrammarRNA {
     	
     	return answer;
     }
+    
+    
+    
 }
