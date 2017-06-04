@@ -141,6 +141,7 @@ public class GrammarRNA {
     	parser.recognize(S, Tokens.tokenize("A T C G"));
     	ArrayList<ParseTreeWithScore> bestTrees = new ArrayList<>();
     	ArrayList<ParseTreeWithScore> currentTrees = new ArrayList<>();
+        int end = finalSize/2 - beginSize/2;
     	double currentProbability = 0;
     	double bestProbability = 0;
     	String iterableChain;
@@ -149,8 +150,8 @@ public class GrammarRNA {
         while(j >= 0){
             currentTrees.clear();
             iterableChain = chain;
-            for(int i=0; i<(finalSize/2 - beginSize/2); i++){
-                if(i >= 4){
+            for(int i=0; i<end; i++){
+                if(i >= end - 2){
                         iterableChain = joinCenter(iterableChain, 0);
                 }
                 else{
@@ -207,7 +208,7 @@ public class GrammarRNA {
         String begin = POSIBLE_PAIRS[ThreadLocalRandom.current().nextInt(1, 4)];
         
         //Final size of RNA
-        int finalSizeRNA = 12;
+        int finalSizeRNA = 16;
         int beginSizeRNA = 2;
         int beginSizeObjetive = 4;
         
@@ -217,14 +218,15 @@ public class GrammarRNA {
         }
         
         ArrayList<ParseTreeWithScore> f = theBest(begin, 1, beginSizeObjetive, finalSizeRNA);
-        ArrayList<ParseTreeWithScore> winner = theBest(begin, 5, beginSizeObjetive, finalSizeRNA);
+        ArrayList<ParseTreeWithScore> winner = theBest(begin, 500, beginSizeObjetive, finalSizeRNA);
+        
         for(ParseTreeWithScore tree : winner) {
             System.out.println(tree);
         }
         System.out.println("----------Random Try---------");
-        System.out.println(f.get(f.size()-1));
-        //save max probability
-        //¿Porque en una cadena de RNA porque las 4 proteinas del centro porque pueden romper el patrón de pares? 
+        System.out.println(f.get(f.size()-1).score.getProbability());
+        System.out.println("----------Best Try---------");
+        System.out.println(winner.get(f.size()-1).score.getProbability());       
     }
     
 }
