@@ -1,4 +1,4 @@
-package estocasticosfinal;
+package algorithm;
 
 import org.leibnizcenter.cfg.category.Category;
 import org.leibnizcenter.cfg.category.nonterminal.NonTerminal;

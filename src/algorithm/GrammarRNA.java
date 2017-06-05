@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package estocasticosfinal;
+package algorithm;
 
 //Credits to https://github.com/digitalheir/java-probabilistic-earley-parser
+import gui.Principal;
 import org.leibnizcenter.cfg.algebra.semiring.dbl.LogSemiring;
 import org.leibnizcenter.cfg.category.terminal.Terminal;
 //import org.leibnizcenter.cfg.category.terminal.stringterminal.StringTerminal;
@@ -237,9 +238,10 @@ public class GrammarRNA {
     	return answer;
     }
     
+    
     public static void main(String[] args) {      
         //Initially pair
-        String begin = POSIBLE_PAIRS[ThreadLocalRandom.current().nextInt(1, 4)];
+         /*String begin = POSIBLE_PAIRS[ThreadLocalRandom.current().nextInt(1, 4)];
         
         //Final size of RNA
         int finalSizeRNA = 12;
@@ -254,7 +256,9 @@ public class GrammarRNA {
         ArrayList<ParseTreeWithScore> winner = theBest(begin, 5, beginSizeObjetive, finalSizeRNA);
         for (ParseTreeWithScore tree : winner) {
             System.out.println(tree);
-        }
+        }*/
+        
+        
         //save max probability
         //¿Porque en una cadena de RNA porque las 4 proteinas del centro porque pueden romper el patrón de pares? 
     }
