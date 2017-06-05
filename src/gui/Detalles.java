@@ -293,6 +293,7 @@ public class Detalles extends javax.swing.JFrame {
 
         jButton_ExitSecond.setBackground(new java.awt.Color(204, 0, 0));
         jButton_ExitSecond.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jButton_ExitSecond.setForeground(new java.awt.Color(255, 255, 255));
         jButton_ExitSecond.setText("Salir");
         jButton_ExitSecond.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
