@@ -8,13 +8,13 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="EstocasticosFinal.jar" size="120636" download="eager" />
+    <jar href="EstocasticosFinal.jar" size="160472" download="eager" />
     <jar href="lib\AbsoluteLayout.jar" size="2903" download="eager" />
     <jar href="lib\probabilistic-earley-parser-0.9.12-jar-with-dependencies.jar" size="2643402" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="EstocasticosFinal" >
     <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="estocasticosfinal.EstocasticosFinal"  name="EstocasticosFinal" />
+  <jfx:javafx-desc  width="800" height="600" main-class="algorithm.EstocasticosFinal"  name="EstocasticosFinal" />
   <update check="always"/>
 </jnlp>

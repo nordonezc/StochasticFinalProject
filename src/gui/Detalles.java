@@ -5,6 +5,7 @@
  */
 package gui;
 
+import algorithm.GrammarRNA;
 import com.sun.glass.events.KeyEvent;
 
 /**
@@ -15,13 +16,27 @@ public class Detalles extends javax.swing.JFrame {
 
     int xMouse;
     int yMouse;
+    GrammarRNA grammarRNA;
 
     /**
      * Creates new form Principal
      */
-    public Detalles() {
+    public Detalles(GrammarRNA gRNA) {
         initComponents();
+        grammarRNA = gRNA;
         this.setLocationRelativeTo(null);
+        jLabel_Chain.setText(grammarRNA.getChain());
+        jTextField_Grammar1.setText(String.valueOf(grammarRNA.getProbability(0)));
+        jTextField_Grammar2.setText(String.valueOf(grammarRNA.getProbability(1)));
+        jTextField_Grammar3.setText(String.valueOf(grammarRNA.getProbability(2)));
+        jTextField_Grammar4.setText(String.valueOf(grammarRNA.getProbability(3)));
+        jTextField_Grammar5.setText(String.valueOf(grammarRNA.getProbability(4)));
+        jTextField_Grammar6.setText(String.valueOf(grammarRNA.getProbability(5)));
+        jTextField_Grammar7.setText(String.valueOf(grammarRNA.getProbability(6)));
+        jTextField_Grammar8.setText(String.valueOf(grammarRNA.getProbability(7)));
+        jTextField_Grammar9.setText(String.valueOf(grammarRNA.getProbability(8)));
+        jTextField_Grammar10.setText(String.valueOf(grammarRNA.getProbability(9)));
+        jTextField_Grammar11.setText(String.valueOf(grammarRNA.getProbability(10)));
     }
 
     /**
@@ -34,24 +49,34 @@ public class Detalles extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel_Tittle = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField_Tree3 = new javax.swing.JTextField();
-        jTextField_Tree4 = new javax.swing.JTextField();
-        jTextField_Tree5 = new javax.swing.JTextField();
-        jTextField_Tree6 = new javax.swing.JTextField();
-        jTextField_Tree7 = new javax.swing.JTextField();
-        jTextField_Tree8 = new javax.swing.JTextField();
-        jTextField_Tree9 = new javax.swing.JTextField();
-        jTextField_Tree10 = new javax.swing.JTextField();
-        jTextField_Tree11 = new javax.swing.JTextField();
-        jTextField_Tree13 = new javax.swing.JTextField();
-        jTextField_Tree2 = new javax.swing.JTextField();
-        jTextField_Chain = new javax.swing.JTextField();
-        jTextField_Tree = new javax.swing.JTextField();
-        jButton_Confirmar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton_Ejecutar = new javax.swing.JButton();
-        jButton_Mostrar = new javax.swing.JButton();
+        jLabel_Chain = new javax.swing.JTextField();
+        jScrollPane_Grammar = new javax.swing.JScrollPane();
+        jTextArea_Grammar = new javax.swing.JTextArea();
+        jLabel_Grammar1 = new javax.swing.JLabel();
+        jLabel_Grammar2 = new javax.swing.JLabel();
+        jLabel_Grammar3 = new javax.swing.JLabel();
+        jLabel_Grammar4 = new javax.swing.JLabel();
+        jLabel_Grammar5 = new javax.swing.JLabel();
+        jLabel_Grammar6 = new javax.swing.JLabel();
+        jLabel_Grammar7 = new javax.swing.JLabel();
+        jLabel_Grammar8 = new javax.swing.JLabel();
+        jLabel_Grammar9 = new javax.swing.JLabel();
+        jLabel_Grammar10 = new javax.swing.JLabel();
+        jLabel_Grammar11 = new javax.swing.JLabel();
+        jTextField_Grammar1 = new javax.swing.JTextField();
+        jTextField_Grammar2 = new javax.swing.JTextField();
+        jTextField_Grammar3 = new javax.swing.JTextField();
+        jTextField_Grammar4 = new javax.swing.JTextField();
+        jTextField_Grammar5 = new javax.swing.JTextField();
+        jTextField_Grammar6 = new javax.swing.JTextField();
+        jTextField_Grammar7 = new javax.swing.JTextField();
+        jTextField_Grammar8 = new javax.swing.JTextField();
+        jTextField_Grammar9 = new javax.swing.JTextField();
+        jTextField_Grammar10 = new javax.swing.JTextField();
+        jTextField_Grammar11 = new javax.swing.JTextField();
+        jButton_Exit = new javax.swing.JButton();
+        jButton_Save = new javax.swing.JButton();
+        jButton_ExitSecond = new javax.swing.JButton();
         jLabel_drag = new javax.swing.JLabel();
         jLabel_background = new javax.swing.JLabel();
 
@@ -65,158 +90,216 @@ public class Detalles extends javax.swing.JFrame {
         jLabel_Tittle.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Tittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_Tittle.setText("Detalles");
-        getContentPane().add(jLabel_Tittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 280, 30));
+        getContentPane().add(jLabel_Tittle, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 17, 370, -1));
 
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, 20));
-
-        jTextField_Tree3.setEditable(false);
-        jTextField_Tree3.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree3.addActionListener(new java.awt.event.ActionListener() {
+        jLabel_Chain.setEditable(false);
+        jLabel_Chain.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        jLabel_Chain.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Chain.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jLabel_Chain.setOpaque(false);
+        jLabel_Chain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree3ActionPerformed(evt);
+                jLabel_ChainActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 40, 20));
+        getContentPane().add(jLabel_Chain, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 370, 30));
 
-        jTextField_Tree4.setEditable(false);
-        jTextField_Tree4.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree4.addActionListener(new java.awt.event.ActionListener() {
+        jTextArea_Grammar.setEditable(false);
+        jTextArea_Grammar.setColumns(20);
+        jTextArea_Grammar.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jTextArea_Grammar.setLineWrap(true);
+        jTextArea_Grammar.setRows(5);
+        jTextArea_Grammar.setText("S = ASt|TSa|CSg|GSc|NL1\nSa = SA\nSt = ST\nSc = SC\nSg = SG\nL1 = NL2\nL2 = NN\nA = \"A\"\nT = \"T\"\nC = \"C\"\nG = \"G\"");
+        jTextArea_Grammar.setBorder(null);
+        jScrollPane_Grammar.setViewportView(jTextArea_Grammar);
+
+        getContentPane().add(jScrollPane_Grammar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 190, 180));
+
+        jLabel_Grammar1.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar1.setText("S->A St");
+        getContentPane().add(jLabel_Grammar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 40, 20));
+
+        jLabel_Grammar2.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar2.setText("S->T Sa");
+        getContentPane().add(jLabel_Grammar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 40, 20));
+
+        jLabel_Grammar3.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar3.setText("S->C Sg");
+        getContentPane().add(jLabel_Grammar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 40, 20));
+
+        jLabel_Grammar4.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar4.setText("S->G Sc");
+        getContentPane().add(jLabel_Grammar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 40, 20));
+
+        jLabel_Grammar5.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar5.setText("S->N L");
+        getContentPane().add(jLabel_Grammar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 40, 20));
+
+        jLabel_Grammar6.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar6.setText("Sa->SA");
+        getContentPane().add(jLabel_Grammar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 40, 20));
+
+        jLabel_Grammar7.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar7.setText("St->ST");
+        getContentPane().add(jLabel_Grammar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, 40, 20));
+
+        jLabel_Grammar8.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar8.setText("Sc->SC");
+        getContentPane().add(jLabel_Grammar8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 40, 20));
+
+        jLabel_Grammar9.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar9.setText("Sg->SG");
+        getContentPane().add(jLabel_Grammar9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 40, 20));
+
+        jLabel_Grammar10.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar10.setText("L1-> NL2");
+        getContentPane().add(jLabel_Grammar10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 40, 20));
+
+        jLabel_Grammar11.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jLabel_Grammar11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Grammar11.setText("L2 -> NN");
+        getContentPane().add(jLabel_Grammar11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 40, 20));
+
+        jTextField_Grammar1.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree4ActionPerformed(evt);
+                jTextField_Grammar1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 40, 20));
+        getContentPane().add(jTextField_Grammar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 40, 20));
 
-        jTextField_Tree5.setEditable(false);
-        jTextField_Tree5.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree5.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Grammar2.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree5ActionPerformed(evt);
+                jTextField_Grammar2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 40, 20));
+        getContentPane().add(jTextField_Grammar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 40, 20));
 
-        jTextField_Tree6.setEditable(false);
-        jTextField_Tree6.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree6.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Grammar3.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree6ActionPerformed(evt);
+                jTextField_Grammar3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, 40, 20));
+        getContentPane().add(jTextField_Grammar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 40, 20));
 
-        jTextField_Tree7.setEditable(false);
-        jTextField_Tree7.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree7.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Grammar4.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree7ActionPerformed(evt);
+                jTextField_Grammar4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 40, 20));
+        getContentPane().add(jTextField_Grammar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 40, 20));
 
-        jTextField_Tree8.setEditable(false);
-        jTextField_Tree8.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree8.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Grammar5.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree8ActionPerformed(evt);
+                jTextField_Grammar5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 40, 20));
+        getContentPane().add(jTextField_Grammar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 40, 20));
 
-        jTextField_Tree9.setEditable(false);
-        jTextField_Tree9.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree9.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Grammar6.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree9ActionPerformed(evt);
+                jTextField_Grammar6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 40, 20));
+        getContentPane().add(jTextField_Grammar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 40, 20));
 
-        jTextField_Tree10.setEditable(false);
-        jTextField_Tree10.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree10.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Grammar7.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree10ActionPerformed(evt);
+                jTextField_Grammar7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 40, 20));
+        getContentPane().add(jTextField_Grammar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 40, 20));
 
-        jTextField_Tree11.setEditable(false);
-        jTextField_Tree11.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree11.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Grammar8.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree11ActionPerformed(evt);
+                jTextField_Grammar8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 40, 20));
+        getContentPane().add(jTextField_Grammar8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, 40, 20));
 
-        jTextField_Tree13.setEditable(false);
-        jTextField_Tree13.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree13.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Grammar9.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree13ActionPerformed(evt);
+                jTextField_Grammar9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 40, 20));
+        getContentPane().add(jTextField_Grammar9, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, 40, 20));
 
-        jTextField_Tree2.setEditable(false);
-        jTextField_Tree2.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree2.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Grammar10.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_Tree2ActionPerformed(evt);
+                jTextField_Grammar10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, 40, 20));
+        getContentPane().add(jTextField_Grammar10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 40, 20));
 
-        jTextField_Chain.setEditable(false);
-        jTextField_Chain.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Chain.setOpaque(false);
-        jTextField_Chain.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_Grammar11.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jTextField_Grammar11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Grammar11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_ChainActionPerformed(evt);
+                jTextField_Grammar11ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Chain, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 340, 30));
+        getContentPane().add(jTextField_Grammar11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 40, 20));
 
-        jTextField_Tree.setEditable(false);
-        jTextField_Tree.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jTextField_Tree.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Exit.setBackground(new java.awt.Color(204, 0, 0));
+        jButton_Exit.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jButton_Exit.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Exit.setText("x");
+        jButton_Exit.setBorderPainted(false);
+        jButton_Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_TreeActionPerformed(evt);
+                jButton_ExitActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_Tree, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 200, 170));
+        getContentPane().add(jButton_Exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 40, 30));
 
-        jButton_Confirmar.setText("Confirmar Cambios");
-        getContentPane().add(jButton_Confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 190, 30));
-
-        jButton1.setBackground(new java.awt.Color(204, 0, 0));
-        jButton1.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("x");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Save.setBackground(new java.awt.Color(0, 204, 204));
+        jButton_Save.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jButton_Save.setText("Confirmar Cambios");
+        jButton_Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton_SaveActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 40, 30));
+        getContentPane().add(jButton_Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 190, 30));
 
-        jButton_Ejecutar.setBackground(new java.awt.Color(0, 204, 204));
-        jButton_Ejecutar.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jButton_Ejecutar.setText("Guardar");
-        getContentPane().add(jButton_Ejecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 90, 30));
-
-        jButton_Mostrar.setBackground(new java.awt.Color(204, 0, 0));
-        jButton_Mostrar.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
-        jButton_Mostrar.setText("Salir");
-        jButton_Mostrar.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ExitSecond.setBackground(new java.awt.Color(204, 0, 0));
+        jButton_ExitSecond.setFont(new java.awt.Font("Calibri", 0, 11)); // NOI18N
+        jButton_ExitSecond.setText("Salir");
+        jButton_ExitSecond.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_MostrarActionPerformed(evt);
+                jButton_ExitSecondActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 100, 30));
+        getContentPane().add(jButton_ExitSecond, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 100, 30));
 
         jLabel_drag.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -235,14 +318,10 @@ public class Detalles extends javax.swing.JFrame {
         jLabel_background.setToolTipText("");
         jLabel_background.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.gray, java.awt.Color.gray));
         jLabel_background.setOpaque(true);
-        getContentPane().add(jLabel_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 320));
+        getContentPane().add(jLabel_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField_TreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_TreeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_TreeActionPerformed
 
     private void jLabel_dragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_dragMouseDragged
         // TODO add your handling code here:
@@ -258,118 +337,155 @@ public class Detalles extends javax.swing.JFrame {
         yMouse = evt.getY();
     }//GEN-LAST:event_jLabel_dragMousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExitActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_jButton_ExitActionPerformed
 
-    private void jTextField_ChainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_ChainActionPerformed
+    private void jLabel_ChainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLabel_ChainActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_ChainActionPerformed
+    }//GEN-LAST:event_jLabel_ChainActionPerformed
 
-    private void jButton_MostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MostrarActionPerformed
+    private void jButton_ExitSecondActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExitSecondActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton_MostrarActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_jButton_ExitSecondActionPerformed
 
-    private void jTextField_Tree2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree2ActionPerformed
+    private void jTextField_Grammar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree2ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar6ActionPerformed
 
-    private void jTextField_Tree3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree3ActionPerformed
+    private void jTextField_Grammar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree3ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar7ActionPerformed
 
-    private void jTextField_Tree4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree4ActionPerformed
+    private void jTextField_Grammar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree4ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar8ActionPerformed
 
-    private void jTextField_Tree5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree5ActionPerformed
+    private void jTextField_Grammar9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar9ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree5ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar9ActionPerformed
 
-    private void jTextField_Tree6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree6ActionPerformed
+    private void jTextField_Grammar10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar10ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree6ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar10ActionPerformed
 
-    private void jTextField_Tree7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree7ActionPerformed
+    private void jTextField_Grammar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree7ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar1ActionPerformed
 
-    private void jTextField_Tree8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree8ActionPerformed
+    private void jTextField_Grammar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree8ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar2ActionPerformed
 
-    private void jTextField_Tree9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree9ActionPerformed
+    private void jTextField_Grammar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree9ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar3ActionPerformed
 
-    private void jTextField_Tree10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree10ActionPerformed
+    private void jTextField_Grammar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree10ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar4ActionPerformed
 
-    private void jTextField_Tree11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree11ActionPerformed
+    private void jTextField_Grammar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree11ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar5ActionPerformed
 
-    private void jTextField_Tree13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Tree13ActionPerformed
+    private void jTextField_Grammar11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_Grammar11ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Tree13ActionPerformed
+    }//GEN-LAST:event_jTextField_Grammar11ActionPerformed
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void jButton_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SaveActionPerformed
+        // TODO add your handling code here:
+        double probability[] = new double[11];
+
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Detalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Detalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Detalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Detalles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+            probability[0] = Double.parseDouble(jTextField_Grammar1.getText());
+            probability[1] = Double.parseDouble(jTextField_Grammar2.getText());
+            probability[2] = Double.parseDouble(jTextField_Grammar3.getText());
+            probability[3] = Double.parseDouble(jTextField_Grammar4.getText());
+            probability[4] = Double.parseDouble(jTextField_Grammar5.getText());
+            probability[5] = Double.parseDouble(jTextField_Grammar6.getText());
+            probability[6] = Double.parseDouble(jTextField_Grammar7.getText());
+            probability[7] = Double.parseDouble(jTextField_Grammar8.getText());
+            probability[8] = Double.parseDouble(jTextField_Grammar9.getText());
+            probability[9] = Double.parseDouble(jTextField_Grammar10.getText());
+            probability[10] = Double.parseDouble(jTextField_Grammar11.getText());
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Detalles().setVisible(true);
+            if (satisfiedPlus(probability) && allProbabilities(probability)) {
+                grammarRNA.setProbability(probability);
+                setVisible(false);
             }
-        });
+        } catch (Exception e) {
+
+        }
+
+    }//GEN-LAST:event_jButton_SaveActionPerformed
+
+    /**
+     * If all the numbers are lower than one and higher than 0
+     * @param probability
+     * @return 
+     */
+    private boolean allProbabilities(double[] probability){
+        boolean answer = true;
+        
+        for (double d : probability) {
+            if(d<0 || d>1){
+                answer = false;
+                break;
+            }
+        }
+        
+        return answer;
+    }
+    
+    /**
+     * If the sum of the first five equals or lower to 1
+     * @param probability
+     * @return 
+     */
+    private boolean satisfiedPlus(double[] probability) {
+        boolean answer = false;
+
+        if ((probability[0] + probability[1] + probability[2] + probability[3] + probability[4]) <= 1) {
+            answer = true;
+        }
+
+        return answer;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton_Confirmar;
-    private javax.swing.JButton jButton_Ejecutar;
-    private javax.swing.JButton jButton_Mostrar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton_Exit;
+    private javax.swing.JButton jButton_ExitSecond;
+    private javax.swing.JButton jButton_Save;
+    private javax.swing.JTextField jLabel_Chain;
+    private javax.swing.JLabel jLabel_Grammar1;
+    private javax.swing.JLabel jLabel_Grammar10;
+    private javax.swing.JLabel jLabel_Grammar11;
+    private javax.swing.JLabel jLabel_Grammar2;
+    private javax.swing.JLabel jLabel_Grammar3;
+    private javax.swing.JLabel jLabel_Grammar4;
+    private javax.swing.JLabel jLabel_Grammar5;
+    private javax.swing.JLabel jLabel_Grammar6;
+    private javax.swing.JLabel jLabel_Grammar7;
+    private javax.swing.JLabel jLabel_Grammar8;
+    private javax.swing.JLabel jLabel_Grammar9;
     private javax.swing.JLabel jLabel_Tittle;
     private javax.swing.JLabel jLabel_background;
     private javax.swing.JLabel jLabel_drag;
-    private javax.swing.JTextField jTextField_Chain;
-    private javax.swing.JTextField jTextField_Tree;
-    private javax.swing.JTextField jTextField_Tree10;
-    private javax.swing.JTextField jTextField_Tree11;
-    private javax.swing.JTextField jTextField_Tree13;
-    private javax.swing.JTextField jTextField_Tree2;
-    private javax.swing.JTextField jTextField_Tree3;
-    private javax.swing.JTextField jTextField_Tree4;
-    private javax.swing.JTextField jTextField_Tree5;
-    private javax.swing.JTextField jTextField_Tree6;
-    private javax.swing.JTextField jTextField_Tree7;
-    private javax.swing.JTextField jTextField_Tree8;
-    private javax.swing.JTextField jTextField_Tree9;
+    private javax.swing.JScrollPane jScrollPane_Grammar;
+    private javax.swing.JTextArea jTextArea_Grammar;
+    private javax.swing.JTextField jTextField_Grammar1;
+    private javax.swing.JTextField jTextField_Grammar10;
+    private javax.swing.JTextField jTextField_Grammar11;
+    private javax.swing.JTextField jTextField_Grammar2;
+    private javax.swing.JTextField jTextField_Grammar3;
+    private javax.swing.JTextField jTextField_Grammar4;
+    private javax.swing.JTextField jTextField_Grammar5;
+    private javax.swing.JTextField jTextField_Grammar6;
+    private javax.swing.JTextField jTextField_Grammar7;
+    private javax.swing.JTextField jTextField_Grammar8;
+    private javax.swing.JTextField jTextField_Grammar9;
     // End of variables declaration//GEN-END:variables
 }
